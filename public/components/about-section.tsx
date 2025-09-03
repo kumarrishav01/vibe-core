@@ -72,7 +72,7 @@ export default function AboutSection() {
         >
           <h2 className="text-5xl md:text-6xl font-thin text-white mb-8">About</h2>
           <p className="text-xl text-gray-300 leading-relaxed mb-6">
-            Hey! I'm Aryanil — a passionate developer and creative technologist who loves turning crazy ideas into real,
+            Hey! I'm Rish — a passionate developer and creative technologist who loves turning crazy ideas into real,
             usable projects. Over the past few years, I've built and launched a wide range of products, from advanced
             Discord bots to AI-powered student productivity apps.
           </p>

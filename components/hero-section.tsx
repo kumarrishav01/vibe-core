@@ -66,14 +66,14 @@ export default function HeroSection() {
         <div className="text-center text-white">
           <h1 className="text-6xl md:text-8xl font-thin mb-6 tracking-wider">
             <span className="inline-block animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              ARYANIL
+              VIBE
             </span>
             <br />
             <span
               className="inline-block animate-fade-in-up text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600"
               style={{ animationDelay: "0.4s" }}
             >
-              DEVELOPER
+              OFFICIAL
             </span>
           </h1>
           <p

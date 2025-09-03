@@ -67,7 +67,7 @@ export default function About() {
                   Who I Am 🚀
                 </h2>
                 <p className="text-lg text-white/80 leading-relaxed mb-4">
-                  Yo! I'm Aryanil — a Gen Z developer who's obsessed with turning wild ideas into mind-blowing digital experiences. 
+                  Yo! I'm Rish — a JEEtard who's obsessed with turning wild ideas into mind-blowing digital experiences. 
                   I live and breathe cutting-edge tech, from AI to Web3 to 3D graphics.
                 </p>
                 <p className="text-lg text-white/70 leading-relaxed">

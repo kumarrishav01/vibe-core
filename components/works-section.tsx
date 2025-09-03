@@ -115,7 +115,7 @@ export default function WorksSection() {
       title: "E-sports",
       description: "Experienced e-sports athelete in BGMI",
       type: "torus",
-      image: "/images/esports.png",
+      image: "/images/esports.jpg" ,
     },
     {
       id: "work4",

@@ -47,7 +47,7 @@ const Navigation = () => {
             >
               <Link href="/" className="text-2xl font-bold">
                 <span className="bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent">
-                  ARYANIL
+                  VIBE
                 </span>
               </Link>
             </motion.div>

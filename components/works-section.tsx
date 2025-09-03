@@ -112,10 +112,10 @@ export default function WorksSection() {
     },
     {
       id: "work3",
-      title: "Voice Cloning Platform",
-      description: "Experimental voice cloning technology with anime-inspired generative tools",
+      title: "E-sports",
+      description: "Experienced e-sports athelete in BGMI",
       type: "torus",
-      image: "/images/voice-cloning.png",
+      image: "/images/esports.png",
     },
     {
       id: "work4",

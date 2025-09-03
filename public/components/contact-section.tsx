@@ -90,11 +90,11 @@ export default function ContactSection() {
           <div className="space-y-4 text-gray-400">
             <div className="cursor-hover flex items-center space-x-4" data-cursor-type="contact">
               <span className="w-2 h-2 bg-red-400 rounded-full"></span>
-              <span>aryanilsaikia@gmail.com</span>
+              <span>rishofficial@vibecore.in</span>
             </div>
             <div className="cursor-hover flex items-center space-x-4" data-cursor-type="contact">
               <span className="w-2 h-2 bg-red-600 rounded-full"></span>
-              <span>Discord: @ary_u</span>
+              <span>Discord: @tmharimummykapati</span>
             </div>
             <div className="cursor-hover flex items-center space-x-4" data-cursor-type="contact">
               <span className="w-2 h-2 bg-red-500 rounded-full"></span>

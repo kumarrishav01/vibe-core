@@ -110,10 +110,10 @@ export default function About() {
                   Skills That Hit Different 💯
                 </h2>
                 {[
-                  { skill: "React & Next.js", level: 95, emoji: "⚛️" },
-                  { skill: "Three.js & WebGL", level: 92, emoji: "🎨" },
-                  { skill: "AI & Machine Learning", level: 88, emoji: "🤖" },
-                  { skill: "Web3 & Blockchain", level: 85, emoji: "⛓️" },
+                  { skill: "Physics", level: 95, emoji: "⚛️" },
+                  { skill: "Chemistry", level: 92, emoji: "🎨" },
+                  { skill: "Mathematics", level: 88, emoji: "🤖" },
+                  { skill: "AI & Machine Learning", level: 85, emoji: "⛓️" },
                   { skill: "Creative Coding", level: 98, emoji: "✨" }
                 ].map((item, index) => (
                   <motion.div 

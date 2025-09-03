@@ -72,18 +72,13 @@ export default function AboutSection() {
         >
           <h2 className="text-5xl md:text-6xl font-thin text-white mb-8">About</h2>
           <p className="text-xl text-gray-300 leading-relaxed mb-6">
-            Hey! I'm Aryanil — a passionate developer and creative technologist who loves turning crazy ideas into real,
-            usable projects. Over the past few years, I've built and launched a wide range of products, from advanced
-            Discord bots to AI-powered student productivity apps.
+            Hey! I'm Rish — a curious learner and determined JEE aspirant who thrives on solving tough problems and pushing myself beyond limits. Over the past few years, I’ve dedicated myself to building strong foundations in physics, chemistry, and mathematics, while also exploring the joy of connecting concepts across subjects.
           </p>
           <p className="text-lg text-gray-400 leading-relaxed mb-6">
-            I've explored voice cloning tech, created anime-inspired generative tools, experimented with custom 3D
-            websites, and even built tools that integrate real-time blockchain price mechanics into games and bots.
+            I love tackling challenging questions, breaking them into smaller ideas, and finding creative approaches that make learning more exciting. Whether it’s experimenting with problem-solving strategies, optimizing study techniques, or mentoring peers with doubts, I treat preparation as both a journey of discipline and discovery.
           </p>
           <p className="text-lg text-gray-400 leading-relaxed">
-            Beyond code, I'm fascinated by storytelling and how tech can evoke emotion, whether through interactive UI
-            animations or anime-inspired visual experiments. Right now, I'm focused on combining web3, AI, and 3D design
-            to create futuristic, high-impact digital experiences that feel alive and memorable.
+            Beyond academics, I’m fascinated by how logic, design, and imagination intersect. I enjoy exploring technology, creative thinking, and storytelling that inspires motivation during long study hours. Right now, my focus is mastering JEE concepts while building a mindset that blends hard work, consistency, and curiosity for lifelong learning.
           </p>
         </div>
 
@@ -92,12 +87,12 @@ export default function AboutSection() {
         >
           <div className="space-y-6">
             {[
-              { skill: "Three.js & WebGL", level: 95 },
-              { skill: "React & Next.js", level: 92 },
-              { skill: "AI & Machine Learning", level: 88 },
-              { skill: "Web3 & Blockchain", level: 85 },
-              { skill: "Discord Bot Development", level: 98 },
+              { skill: "Physics", level: 95 },
+              { skill: "Chemistry", level: 92 },
+              { skill: "Mathematics", level: 88 },
+              { skill: "AI & Machine Learning", level: 98 },
               { skill: "Creative Coding", level: 90 },
+              
             ].map((item, index) => (
               <div key={item.skill} className="cursor-hover" data-cursor-type="hover">
                 <div className="flex justify-between text-white mb-2">

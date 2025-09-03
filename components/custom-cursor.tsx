@@ -13,10 +13,14 @@ export default function CustomCursor() {
     }
 
     const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      if (target.classList.contains("cursor-hover")) {
-        setIsHovering(true)
-        setCursorType(target.dataset.cursorType || "hover")
+      let target = e.target as HTMLElement | null
+      while (target) {
+        if (target.classList && target.classList.contains("cursor-hover")) {
+          setIsHovering(true)
+          setCursorType(target.dataset.cursorType || "hover")
+          return
+        }
+        target = target.parentElement
       }
     }
 

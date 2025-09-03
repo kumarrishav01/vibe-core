@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 "use client"
 
 import { Canvas } from "@react-three/fiber"
@@ -170,7 +171,12 @@ export default function WorksSection() {
                 {work.title}
               </h3>
               <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                {work.description}
+                <motion.p
+                  className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.07 }}
+                >
+                  {work.description}
+                </motion.p>
               </p>
             </div>
           ))}

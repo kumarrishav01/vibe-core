@@ -2,6 +2,7 @@
 
 import { Canvas } from "@react-three/fiber"
 import { Suspense, useRef, useEffect, useState } from "react"
+import { motion, useAnimation } from "framer-motion"
 import { Text, Float, Environment, Box } from "@react-three/drei"
 import ScrollCameraController from "./scroll-camera-controller"
 
@@ -30,23 +31,23 @@ function FloatingElements() {
 }
 
 export default function AboutSection() {
-  const [isVisible, setIsVisible] = useState(false)
+  const controls = useAnimation()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new window.IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting)
+        if (entry.isIntersecting) {
+          controls.start("visible")
+        }
       },
-      { threshold: 0.3 },
+      { threshold: 0.3 }
     )
-
     if (sectionRef.current) {
       observer.observe(sectionRef.current)
     }
-
     return () => observer.disconnect()
-  }, [])
+  }, [controls])
 
   return (
     <section
@@ -67,23 +68,73 @@ export default function AboutSection() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div
-          className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 60, scale: 0.95, rotate: -5 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: 0,
+              transition: {
+                type: "spring",
+                bounce: 0.5,
+                duration: 1.2,
+                staggerChildren: 0.18,
+              },
+            },
+          }}
         >
-          <h2 className="text-5xl md:text-6xl font-thin text-white mb-8">About</h2>
-          <p className="text-xl text-gray-300 leading-relaxed mb-6">
+          <motion.h2
+            className="text-5xl md:text-6xl font-thin text-white mb-8"
+            variants={{ hidden: { opacity: 0, y: 40, scale: 0.8 }, visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", duration: 1 } } }}
+          >
+            About
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-300 leading-relaxed mb-6 cursor-pointer"
+            variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { type: "spring", duration: 1 } } }}
+            whileHover={{ scale: 1.07 }}
+          >
             Hey! I'm Rish — a curious learner and determined JEE aspirant who thrives on solving tough problems and pushing myself beyond limits. Over the past few years, I’ve dedicated myself to building strong foundations in physics, chemistry, and mathematics, while also exploring the joy of connecting concepts across subjects.
-          </p>
-          <p className="text-lg text-gray-400 leading-relaxed mb-6">
+          </motion.p>
+          <motion.p
+            className="text-lg text-gray-400 leading-relaxed mb-6 cursor-pointer"
+            variants={{ hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0, transition: { type: "spring", duration: 1 } } }}
+            whileHover={{ scale: 1.07 }}
+          >
             I love tackling challenging questions, breaking them into smaller ideas, and finding creative approaches that make learning more exciting. Whether it’s experimenting with problem-solving strategies, optimizing study techniques, or mentoring peers with doubts, I treat preparation as both a journey of discipline and discovery.
-          </p>
-          <p className="text-lg text-gray-400 leading-relaxed">
+          </motion.p>
+          <motion.p
+            className="text-lg text-gray-400 leading-relaxed cursor-pointer"
+            variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", duration: 1 } } }}
+            whileHover={{ scale: 1.07 }}
+          >
             Beyond academics, I’m fascinated by how logic, design, and imagination intersect. I enjoy exploring technology, creative thinking, and storytelling that inspires motivation during long study hours. Right now, my focus is mastering JEE concepts while building a mindset that blends hard work, consistency, and curiosity for lifelong learning.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div
-          className={`transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 60, scale: 0.95, rotate: 5 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotate: 0,
+              transition: {
+                type: "spring",
+                bounce: 0.5,
+                duration: 1.2,
+                delayChildren: 0.3,
+                staggerChildren: 0.15,
+              },
+            },
+          }}
         >
           <div className="space-y-6">
             {[
@@ -92,26 +143,34 @@ export default function AboutSection() {
               { skill: "Mathematics", level: 88 },
               { skill: "AI & Machine Learning", level: 98 },
               { skill: "Creative Coding", level: 90 },
-              
             ].map((item, index) => (
-              <div key={item.skill} className="cursor-hover" data-cursor-type="hover">
+              <motion.div
+                key={item.skill}
+                className="cursor-hover"
+                data-cursor-type="hover"
+                initial="hidden"
+                animate={controls}
+                variants={{ hidden: { opacity: 0, x: 40, scale: 0.8 }, visible: { opacity: 1, x: 0, scale: 1, transition: { type: "spring", duration: 0.8 + index * 0.1 } } }}
+              >
                 <div className="flex justify-between text-white mb-2">
                   <span className="font-medium">{item.skill}</span>
                   <span className="text-gray-400">{item.level}%</span>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-1">
-                  <div
-                    className="bg-gradient-to-r from-red-400 to-red-600 h-1 rounded-full transition-all duration-1000 ease-out"
-                    style={{
-                      width: isVisible ? `${item.level}%` : "0%",
-                      transitionDelay: `${index * 0.1 + 0.5}s`,
+                  <motion.div
+                    className="bg-gradient-to-r from-red-400 to-red-600 h-1 rounded-full"
+                    initial={{ width: "0%" }}
+                    animate={controls}
+                    variants={{
+                      hidden: { width: "0%" },
+                      visible: { width: `${item.level}%`, transition: { duration: 1, delay: 0.5 + index * 0.1 } },
                     }}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

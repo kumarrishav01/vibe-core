@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 "use client"
 
 import { Canvas } from "@react-three/fiber"
@@ -111,7 +112,12 @@ export default function ProcessSection() {
                 {index + 1}
               </div>
               <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-              <p className="text-sm leading-relaxed">{step.description}</p>
+              <motion.p
+                className="text-sm leading-relaxed cursor-pointer"
+                whileHover={{ scale: 1.07 }}
+              >
+                {step.description}
+              </motion.p>
             </div>
           ))}
         </div>

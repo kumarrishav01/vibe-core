@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 "use client"
 
 import { Canvas } from "@react-three/fiber"
@@ -71,15 +72,24 @@ export default function AboutSection() {
           className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
         >
           <h2 className="text-5xl md:text-6xl font-thin text-white mb-8">About</h2>
-          <p className="text-xl text-gray-300 leading-relaxed mb-6">
+          <motion.p
+            className="text-xl text-gray-300 leading-relaxed mb-6 cursor-pointer"
+            whileHover={{ scale: 1.07 }}
+          >
             Hey! I'm Rish — a curious learner and determined JEE aspirant who thrives on solving tough problems and pushing myself beyond limits. Over the past few years, I’ve dedicated myself to building strong foundations in physics, chemistry, and mathematics, while also exploring the joy of connecting concepts across subjects.
-          </p>
-          <p className="text-lg text-gray-400 leading-relaxed mb-6">
+          </motion.p>
+          <motion.p
+            className="text-lg text-gray-400 leading-relaxed mb-6 cursor-pointer"
+            whileHover={{ scale: 1.07 }}
+          >
             I love tackling challenging questions, breaking them into smaller ideas, and finding creative approaches that make learning more exciting. Whether it’s experimenting with problem-solving strategies, optimizing study techniques, or mentoring peers with doubts, I treat preparation as both a journey of discipline and discovery.
-          </p>
-          <p className="text-lg text-gray-400 leading-relaxed">
+          </motion.p>
+          <motion.p
+            className="text-lg text-gray-400 leading-relaxed cursor-pointer"
+            whileHover={{ scale: 1.07 }}
+          >
             Beyond academics, I’m fascinated by how logic, design, and imagination intersect. I enjoy exploring technology, creative thinking, and storytelling that inspires motivation during long study hours. Right now, my focus is mastering JEE concepts while building a mindset that blends hard work, consistency, and curiosity for lifelong learning.
-          </p>
+          </motion.p>
         </div>
 
         <div

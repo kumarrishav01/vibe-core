@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useRef } from "react"
+import { motion, useAnimation } from "framer-motion"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { Suspense } from "react"
 import { Sphere, Float } from "@react-three/drei"
@@ -26,6 +27,25 @@ function ContactSphere() {
 }
 
 export default function ContactSection() {
+  const controls = useAnimation()
+  const sectionRef = useRef<HTMLElement>(null)
+
+  React.useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          controls.start("visible")
+        } else {
+          controls.start("hidden")
+        }
+      },
+      { threshold: 0.3 }
+    )
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+    return () => observer.disconnect()
+  }, [controls])
   const formRef = useRef<HTMLFormElement>(null)
 
   const [formData, setFormData] = useState({
@@ -60,7 +80,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative w-full min-h-screen bg-black flex items-center">
+  <section id="contact" ref={sectionRef} className="relative w-full min-h-screen bg-black flex items-center">
       <div className="absolute right-0 top-0 w-1/2 h-full opacity-30">
         <Canvas camera={{ position: [0, 0, 3] }}>
           <Suspense fallback={null}>
@@ -73,39 +93,89 @@ export default function ContactSection() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 className="text-5xl md:text-6xl font-thin text-white mb-8">
-            Let's Build
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
-              Something Amazing
-            </span>
-          </h2>
-          <p className="text-xl text-gray-300 leading-relaxed mb-8">
-            Ready to turn your crazy idea into reality? Let's collaborate and create something that pushes boundaries
-            and feels truly alive. Whether it's AI, web3, 3D, or something completely new — I'm excited to explore it
-            with you.
-          </p>
-
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 60 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                type: "spring",
+                bounce: 0.5,
+                duration: 1.2,
+                staggerChildren: 0.18,
+              },
+            },
+          }}
+        >
+          <motion.h2
+            className="text-5xl md:text-6xl font-thin text-white mb-8 cursor-pointer"
+            variants={{ hidden: { opacity: 0, y: 40, scale: 0.8 }, visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", duration: 1 } } }}
+            whileHover={{ scale: 1.08 }}
+          >
+            Let's Build<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Something Amazing</span>
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-300 leading-relaxed mb-8"
+            variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { type: "spring", duration: 1 } } }}
+          >
+            {`Ready to turn your crazy idea into reality? Let's collaborate and create something that pushes boundaries and feels truly alive. Whether it's AI, web3, 3D, or something completely new — I'm excited to explore it with you.`.split(" ").map((word, idx, arr) => (
+              <motion.span
+                key={idx}
+                whileHover={{ scale: 1.25, color: "#fff" }}
+                style={{ display: "inline-block", cursor: "pointer", marginRight: idx < arr.length - 1 ? "0.25em" : 0 }}
+                transition={{ type: "spring", stiffness: 200, damping: 18 }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.p>
           <div className="space-y-4 text-gray-400">
-            <div className="cursor-hover flex items-center space-x-4" data-cursor-type="contact">
-              <span className="w-2 h-2 bg-red-400 rounded-full"></span>
-              <span>rishofficial@vibecore.in</span>
-            </div>
-            <div className="cursor-hover flex items-center space-x-4" data-cursor-type="contact">
-              <span className="w-2 h-2 bg-red-600 rounded-full"></span>
-              <span>Discord: @tmharimummykapati</span>
-            </div>
-            <div className="cursor-hover flex items-center space-x-4" data-cursor-type="contact">
-              <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-              <span>Available for freelance & collaborations</span>
-            </div>
+            {[
+              { icon: "bg-red-400", text: "rishofficial@vibecore.in" },
+              { icon: "bg-red-600", text: "Discord: @tmharimummykapati" },
+              { icon: "bg-red-500", text: "Available for freelance & collaborations" },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.text}
+                className="cursor-hover flex items-center space-x-4"
+                data-cursor-type="contact"
+                variants={{ hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0, transition: { type: "spring", duration: 0.8 + idx * 0.1 } } }}
+                whileHover={{ scale: 1.07 }}
+              >
+                <span className={`w-2 h-2 ${item.icon} rounded-full`}></span>
+                <motion.span whileHover={{ scale: 1.12 }} className="inline-block">{item.text}</motion.span>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-          <div className="relative">
-            <input
+        <motion.form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="space-y-6"
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 60 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                type: "spring",
+                bounce: 0.5,
+                duration: 1.2,
+                staggerChildren: 0.18,
+              },
+            },
+          }}
+        >
+          <motion.div className="relative" variants={{ hidden: { opacity: 0, x: -40 }, visible: { opacity: 1, x: 0, transition: { type: "spring", duration: 1 } } }}>
+            <motion.input
               type="text"
               name="user_name"
               placeholder="Your Name"
@@ -119,10 +189,9 @@ export default function ContactSection() {
               data-cursor-type="contact"
               required
             />
-          </div>
-
-          <div className="relative">
-            <input
+          </motion.div>
+          <motion.div className="relative" variants={{ hidden: { opacity: 0, x: 40 }, visible: { opacity: 1, x: 0, transition: { type: "spring", duration: 1 } } }}>
+            <motion.input
               type="email"
               name="user_email"
               placeholder="Your Email"
@@ -136,10 +205,9 @@ export default function ContactSection() {
               data-cursor-type="contact"
               required
             />
-          </div>
-
-          <div className="relative">
-            <textarea
+          </motion.div>
+          <motion.div className="relative" variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { type: "spring", duration: 1 } } }}>
+            <motion.textarea
               name="message"
               placeholder="Tell me about your crazy idea..."
               value={formData.message}
@@ -153,16 +221,18 @@ export default function ContactSection() {
               data-cursor-type="contact"
               required
             />
-          </div>
-
-          <button
+          </motion.div>
+          <motion.button
             type="submit"
             disabled={isSending}
             className="cursor-hover w-full p-4 bg-gradient-to-r from-red-400 to-red-600 text-white font-bold hover:from-red-500 hover:to-red-700 transition-all duration-300 transform hover:scale-105"
             data-cursor-type="contact"
+            variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { type: "spring", duration: 1 } } }}
+            whileHover={{ scale: 1.08 }}
           >
             {isSending ? "SENDING..." : "LET'S COLLABORATE"}
-          </button>
+          </motion.button>
+        </motion.form>
         </form>
       </div>
     </section>

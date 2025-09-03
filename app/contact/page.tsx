@@ -18,10 +18,10 @@ export default function Contact() {
   }, [])
 
   const socialLinks = [
-    { icon: '📧', label: 'Email', value: 'aryanil@example.com', gradient: 'from-red-500 to-pink-500' },
-    { icon: '💼', label: 'LinkedIn', value: '/in/aryanil', gradient: 'from-blue-500 to-cyan-500' },
-    { icon: '🐙', label: 'GitHub', value: '/aryanil', gradient: 'from-purple-500 to-indigo-500' },
-    { icon: '📱', label: 'Discord', value: '@ary_u', gradient: 'from-indigo-500 to-purple-500' }
+    { icon: '📧', label: 'Email', value: 'rishofficial@vibecore.in', gradient: 'from-red-500 to-pink-500' },
+    { icon: '💼', label: 'LinkedIn', value: '/in/riiissssshhhhhhh', gradient: 'from-blue-500 to-cyan-500' },
+    { icon: '🐙', label: 'GitHub', value: '/kumarrishav01', gradient: 'from-purple-500 to-indigo-500' },
+    { icon: '📱', label: 'Discord', value: '@tmharimummykapati', gradient: 'from-indigo-500 to-purple-500' }
   ]
 
   return (

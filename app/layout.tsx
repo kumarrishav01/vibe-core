@@ -2,18 +2,18 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Aryanil's Portfolio — Creative Developer & 3D Experiments",
-  description: "Explore Aryanil's cutting-edge portfolio — blending creative coding, 3D experiences, and interactive design. Let's build something amazing together.",
-  generator: "Next.js, Aryanil custom",
-  keywords: ["Aryanil", "Creative Developer", "3D Portfolio", "WebGL", "React Three Fiber", "Interactive Design"],
-  authors: [{ name: "Aryanil", url: "https://aryanil.web.app" }],
-  creator: "Aryanil",
-  publisher: "Aryanil",
-  metadataBase: new URL("https://aryanil.web.app"),
+  title: "Rish's Portfolio — Creative Developer & 3D Experiments",
+  description: "Explore Rish's cutting-edge portfolio — blending creative coding, 3D experiences, and interactive design. Let's build something amazing together.",
+  generator: "Next.js, Rish custom",
+  keywords: ["Rish", "Creative Developer", "3D Portfolio", "WebGL", "React Three Fiber", "Interactive Design"],
+  authors: [{ name: "Rish", url: "https://vibecore.in" }],
+  creator: "Rish",
+  publisher: "Rish",
+  metadataBase: new URL("https://vibecore.in"),
   openGraph: {
     title: "Rish's Portfolio — Creative Developer & 3D Experiments",
     description: "Dive into Rish's portfolio showcasing 3D experiments, creative coding, and cutting-edge interactive web design.",
-    url: "https://vibecore.in/",
+    url: "https://vibecore.in",
     siteName: "Rish Portfolio",
     images: [
       {

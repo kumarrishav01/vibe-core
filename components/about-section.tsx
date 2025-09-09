@@ -35,19 +35,28 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
+    let ticking = false;
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          controls.start("visible")
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            if (entry.isIntersecting) {
+              controls.start("visible")
+            } else {
+              controls.start("hidden")
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       },
-      { threshold: 0.3 }
-    )
+      { threshold: 0.7 }
+    );
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
-    return () => observer.disconnect()
-  }, [controls])
+    return () => observer.disconnect();
+  }, [controls]);
 
   return (
     <section
@@ -72,7 +81,7 @@ export default function AboutSection() {
           initial="hidden"
           animate={controls}
           variants={{
-            hidden: { opacity: 0, y: 60, scale: 0.95, rotate: -5 },
+            hidden: { opacity: 0, y: 60, scale: 0.98, rotate: -2 },
             visible: {
               opacity: 1,
               y: 0,
@@ -80,9 +89,9 @@ export default function AboutSection() {
               rotate: 0,
               transition: {
                 type: "spring",
-                bounce: 0.5,
-                duration: 1.2,
-                staggerChildren: 0.18,
+                bounce: 0.2,
+                duration: 0.7,
+                staggerChildren: 0.12,
               },
             },
           }}
